@@ -1,10 +1,12 @@
 name: Call a reusable workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Main Workflow"]
+    types:
+      - completed
     
 jobs:
   call-workflow:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: akshays-shinde/called/.github/workflows/called.yml@main
