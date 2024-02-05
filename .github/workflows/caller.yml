@@ -2,7 +2,8 @@ name: Call a reusable workflow
 
 on:
   push:
-    - main
+    branches:
+      - main
     
 jobs:
   call-workflow:
