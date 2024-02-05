@@ -1,0 +1,9 @@
+name: Call a reusable workflow
+
+on:
+  push:
+    - main
+    
+jobs:
+  call-workflow:
+    uses: akshays-shinde/called/.github/workflows/called.yml@v1
