@@ -7,4 +7,4 @@ on:
     
 jobs:
   call-workflow:
-    uses: akshays-shinde/called/.github/workflows/called.yml@v1
+    uses: akshays-shinde/called/.github/workflows/called.yml
