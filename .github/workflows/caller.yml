@@ -1,0 +1,26 @@
+name: Call a Reusable Workflow
+
+on:
+  workflow_run:
+    workflows: ["Main Workflow"]
+    types:
+      - completed
+    
+jobs:
+  call-workflow:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: akshays-shinde/called/.github/workflows/called.yml@feature
+  activate-build:
+    needs: [call-workflow]
+    if: ${{ always() && (needs.call-workflow.result == 'success') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Activate Build
+        run: echo "Activating Build"
+  deactivate-build:
+    needs: [call-workflow]
+    if: ${{ always() && (needs.call-workflow.result == 'failure') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deactivate Build
+        run: echo "De-activating Build"
