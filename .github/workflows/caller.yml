@@ -2,7 +2,7 @@ name: Call a Reusable Workflow from feature branch
 
 on:
   workflow_run:
-    workflows: ["Main Workflow"]
+    workflows: ["Main Workflow from feature branch"]
     types:
       - completed
     
