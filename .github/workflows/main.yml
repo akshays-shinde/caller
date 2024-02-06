@@ -1,4 +1,4 @@
-name: Main Workflow
+name: Main Workflow from feature branch
 
 on:
   push:
