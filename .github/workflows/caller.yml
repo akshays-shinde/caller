@@ -17,13 +17,13 @@ jobs:
     steps:
       - run: echo ${{ needs.call-workflow.result }}
   activate-build:
-    if: ${{ always() && (needs.call-workflow.result == 'success') }}
+    if: ${{ always() && (needs.call-workflow.result == success) }}
     runs-on: ubuntu-latest
     steps:
       - name: Activate Build
         run: echo "Activating Build"
   deactivate-build:
-    if: ${{ always() && (needs.call-workflow.result == 'failure') }}
+    if: ${{ always() && (needs.call-workflow.result == failure) }}
     runs-on: ubuntu-latest
     steps:
       - name: Deactivate Build
