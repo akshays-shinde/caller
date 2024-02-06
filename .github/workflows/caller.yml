@@ -12,7 +12,7 @@ jobs:
     uses: akshays-shinde/called/.github/workflows/called.yml@main
   print-output:
     needs: [call-workflow]
-    if: ${{ always() }}
+    if: ${{ always() && (needs.call-workflow.result == 'failure') }}
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ needs.call-workflow.result }}
