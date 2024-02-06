@@ -9,7 +9,7 @@ on:
 jobs:
   call-workflow:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    uses: akshays-shinde/called/.github/workflows/called.yml@main
+    uses: akshays-shinde/called/.github/workflows/called.yml@feature
   activate-build:
     needs: [call-workflow]
     if: ${{ always() && (needs.call-workflow.result == 'success') }}
