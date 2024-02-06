@@ -7,7 +7,7 @@ on:
       - feature
 
 jobs:
-  example_job:
+  main-workflow:
     runs-on: ubuntu-latest
     steps:
       - id: step1
