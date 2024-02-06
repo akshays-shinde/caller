@@ -10,6 +10,11 @@ jobs:
   call-workflow:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     uses: akshays-shinde/called/.github/workflows/called.yml@main
+  print-output:
+    needs: [call-workflow]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.call-workflow.result }}
   activate-build:
     if: ${{ always() && (needs.call-workflow.result == 'success') }}
     runs-on: ubuntu-latest
