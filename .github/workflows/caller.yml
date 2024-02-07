@@ -8,13 +8,8 @@ on:
     
 jobs:
   call-workflow:
-    runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
-      - uses: akshays-shinde/called/.github/workflows/called.yml@feature
+    uses: akshays-shinde/called/.github/workflows/called.yml@feature
   activate-build:
     needs: [call-workflow]
     if: ${{ always() && (needs.call-workflow.result == 'success') }}
