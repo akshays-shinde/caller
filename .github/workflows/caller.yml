@@ -2,7 +2,7 @@ name: Call a Reusable Workflow
 
 on:
   workflow_run:
-    workflows: ["Main Workflow test"]
+    workflows: ["Main Workflow"]
     types:
       - completed
     
